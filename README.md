@@ -34,23 +34,24 @@ Pasos para replicar el entorno de ejecucion:
 
 1. **Clona el repositorio**
    ```bash
-   git clone https://github.com/JoseAndresHG/Selenium-Behave-Automation.git
+   git clone origin https://github.com/JoseAndresHG/pruebas.git
    
-2. **Comandos de ejecucion**
+2. **una vez descargado el repositorio**
+
+    **Ejecutar:** pip install -r requirements.txt 
+
+   
+1. **Comandos de ejecucion**
     
    **WEB:** behave tests_ui/features/agregar_productos.feature
 
    **API:** robot tests_api/Apis.robot
 
-## 📌 Conclusiones
+2.  **Generar reporte web**
 
-      El enfoque de automatización utilizando Selenium junto con Behave permitió implementar pruebas bajo el paradigma BDD, aprovechando un lenguaje basado en Gherkin que no es altamente técnico 
-      y puede ser comprendido fácilmente por perfiles tanto técnicos como no técnicos.
-      Esto facilita la comunicación entre el equipo de desarrollo, QA y negocio, ya que los escenarios se convierten en una documentación viva alineada con los criterios de aceptación.
-      Durante la implementación, se desarrollaron funciones reutilizables aplicando buenas prácticas de estructuración y modularidad, 
-      permitiendo gestionar de manera eficiente las funcionalidades dentro de los flujos requeridos. 
-      Esto mejora la mantenibilidad, escalabilidad y claridad del proyecto. Por otro lado, la automatización de servicios utilizando Robot Framework tambien demuestra
-      ser una alternativa versátil y robusta que ya conocia, adecuada tanto para pruebas de servicios como para automatización web. 
-      Su flexibilidad lo convierten en una herramienta poderosa para complementar estrategias de automatización integral.
+    **Comando para generar reporte UI:**  allure serve allure-results
+    
+    **Reporte de API:** Se genera un archivo .log en la raiz del proyecto
+
       
       

@@ -1,11 +1,11 @@
 class RegistrationLocators:
     USERNAME = "//input[@id='loginusername']"
     PASSWORD = "//input[contains(@id,'loginpassword')]"
+    REALIZAR_PEDIDO= "//button[contains(.,'Place Order')]"
+    COMPRAR = "//button[contains(.,'Purchase')]"
 
 
 class CartLocators:
-    CARRITO = "//a[contains(.,'Add to cart')]"
-    CARRITO_COMPRAS = "//a[contains(.,'Cart')]"
     NAME = "//input[@id='name']"
     COUNTRY = "//input[@id='country']"
     CITY = "//input[@id='city']"

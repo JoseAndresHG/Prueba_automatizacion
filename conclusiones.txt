@@ -1,0 +1,15 @@
+
+## 📌 Conclusiones
+
+    Para la automatización de las pruebas se implementó un enfoque basado en BDD (Behavior Driven Development), lo que permite describir los escenarios de negocio de una manera clara y fácil de entender tanto para perfiles técnicos como funcionales.
+    Esto facilitó la comunicación entre las diferentes áreas involucradas, dentro del ejercicio se automatizó el flujo completo de compra de una plataforma de comercio electrónico, en el cual se validaron los procesos como la selección de productos, la gestión del carrito de compras y la confirmación exitosa de la transacción.
+    El objetivo fue garantizar el flujo completando exitosamente la compra de los productos y a su vez valiando el comportamiento de la plataforma.
+    Adicionalmente, se realizaron pruebas automatizadas sobre servicios expuestos mediante APIs, verificando el correcto funcionamiento de las operaciones disponibles, la integridad de los datos y las respuestas esperadas del sistema.
+    Durante el desarrollo se aplicaron principios de reutilización y organización del código, permitiendo una solución más fácil de mantener y extender. Como resultado, se obtuvo una automatización clara, escalable y alineada con buenas prácticas de aseguramiento de calidad, capaz de validar tanto procesos de negocio como servicios de integración.
+
+      
+ ## 📌 Hallazgos
+
+    Durante el proceso de las pruebas automatizadas se obserevaron algunos comportamientos atipicos lo cual se aplicaron estrategias
+    con el framework que se trabajo para superlarlas, uno de ellos fue un error ElementNotInteractableException, lo cual sucede cuando el elemento no esta visible para interactuar lo que se realizo fue eliminar esperas fijas, e implementar las esperar explicitas condicionada para que el DOM o l pagina cargue completamenete antes de interactuar con el elemento.
+    Tambien se observo que al agregrar un producto al carrito de compras se genera un alerta lo cual bloqueaba el flujo, se implementó un manejador dinámico de alertas mediante el comando 'context.driver.switch_to.alert.accept() con espera explicita para manejar la alerta, y poder continuar con el flujo correctamente.

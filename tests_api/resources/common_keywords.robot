@@ -61,7 +61,6 @@ Actualizar el nombre de la mascota y el estatus
     RETURN    ${response}
 
 
-*** Keywords ***
 Consultar Mascotas Por Estatus
     [Arguments]    ${estatus}
     [Documentation]
@@ -69,4 +68,11 @@ Consultar Mascotas Por Estatus
 
     ${response}=    GET    ${BASE_URL}/pet/findByStatus    params=${parametros}    expected_status=any
     Log    Mascotas encontradas: ${response.content}
+    RETURN    ${response}
+
+Eliminar Mascota Por ID
+    [Arguments]    ${id}
+    [Documentation]    Elimina una mascota por su ID
+    ${response}=    DELETE    ${BASE_URL}/pet/${id}    expected_status=any
+    Log    Respuesta del DELETE: ${response.content}
     RETURN    ${response}

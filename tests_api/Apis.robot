@@ -17,6 +17,6 @@ Actualizar mascota
 Consultar mascota por status
     Consultar Mascotas Por Estatus     sold
 
+Eliminar una mascota existente
+   Eliminar Mascota Por ID    2
 
-
-        

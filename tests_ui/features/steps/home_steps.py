@@ -11,28 +11,41 @@ def step_impl(context, url):
     context.driver.get(url)
 
 
-@step('el usuario selecciona "{nombre_boton}"')
-def step_impl(context, nombre_boton):
-    wait = WebDriverWait(context.driver, 10)
-    elementos = {
-        "INICIAR_SESION": "//a[contains(.,'Log in')]",
-        "BOTON_LOGIN" : "//button[@onclick='logIn()']",
-        "HOME_CATALOGO": "//a[contains(.,'Home (current)')]",
-        "PRODUCTO1": "//a[contains(.,'Nexus 6')]",
-        "PRODUCTO2": "//a[contains(.,'Samsung galaxy s6')]",
-        "REALIZAR_PEDIDO": "//button[contains(.,'Place Order')]",
-        "COMPRAR" : "//button[contains(.,'Purchase')]"
-
-    }
-    xpath = elementos.get(nombre_boton)
-
-    if not xpath:
-        raise ValueError(f"El botón '{nombre_boton}' no está definido en el diccionario.")
-
-    boton = WebDriverWait(context.driver, 20).until(
+@step('el usuario selecciona el botón "{nombre_boton}"')
+def step_seleccionar_boton_dinamico(context, nombre_boton):
+    wait = WebDriverWait(context.driver, 5)
+    try:
+        xpath = getattr(RegistrationLocators, nombre_boton.upper())
+    except AttributeError:
+        raise AttributeError(
+            f"ERROR: El botón '{nombre_boton}' no está definido en la clase RegistrationLocators."
+        )
+    boton = wait.until(
         ec.element_to_be_clickable((By.XPATH, xpath))
     )
     boton.click()
+
+
+@step('el usuario inicia sesión con el usuario "{usuario}" y la contraseña "{contrasena}"')
+def step_iniciar_sesion_completo(context, usuario, contrasena):
+    wait = WebDriverWait(context.driver, 15)
+    boton_nav_login = wait.until(
+        ec.element_to_be_clickable((By.ID, "login2"))
+    )
+    boton_nav_login.click()
+
+    input_usuario = wait.until(
+        ec.visibility_of_element_located((By.ID, "loginusername"))
+    )
+    input_usuario.clear()
+    input_usuario.send_keys(usuario)
+
+    input_password = context.driver.find_element(By.ID, "loginpassword")
+    input_password.clear()
+    input_password.send_keys(contrasena)
+
+    boton_submit = context.driver.find_element(By.XPATH, "//button[@onclick='logIn()']")
+    boton_submit.click()
 
 
 @step('el usuario ingresa "{texto}" en el campo "{nombre_variable}"')

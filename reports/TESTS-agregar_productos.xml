@@ -1,28 +1,30 @@
-<testsuite name="agregar_productos.agregar productos al carrito" tests="1" errors="0" failures="0" skipped="0" time="10.864292" timestamp="2026-02-26T18:51:01.818587" hostname="Joses-MacBook-Air.local"><testcase classname="agregar_productos.agregar productos al carrito" name="Agregar dos productos al carrito correctamente" status="passed" time="10.864292"><system-out>
+<testsuite name="agregar_productos.Agregar productos y realizar compra exitosa" tests="1" errors="0" failures="0" skipped="0" time="11.813154" timestamp="2026-06-03T19:32:05.714304" hostname="Joses-MacBook-Air.local"><testcase classname="agregar_productos.Agregar productos y realizar compra exitosa" name="Agregar múltiples productos y completar la compra con éxito" status="passed" time="11.813154"><system-out>
 <![CDATA[
 @scenario.begin
-  Scenario: Agregar dos productos al carrito correctamente
-    Given el usuario navega a la página pagina https://www.demoblaze.com/ ... passed in 1.194s
-    When el usuario selecciona "INICIAR_SESION" ... passed in 0.355s
-    And el usuario ingresa "JoseH" en el campo "USERNAME" ... passed in 0.739s
-    And el usuario ingresa "Test1234*" en el campo "PASSWORD" ... passed in 0.155s
-    And el usuario selecciona "BOTON_LOGIN" ... passed in 0.138s
-    Then el usuario debería ver su nombre de usuario en el menú ... passed in 1.214s
-    When el usuario selecciona "PRODUCTO1" ... passed in 0.517s
-    And el usuario agrega el producto al "CARRITO" ... passed in 0.869s
-    And el usuario acepta el popup de confirmación ... passed in 0.527s
-    And el usuario selecciona "HOME_CATALOGO" ... passed in 0.413s
-    And el usuario selecciona "PRODUCTO2" ... passed in 0.902s
-    And el usuario agrega el producto al "CARRITO" ... passed in 0.675s
-    And el usuario acepta el popup de confirmación ... passed in 0.522s
-    When el usuario visualiza los productos en el "CARRITO_COMPRAS" ... passed in 0.525s
-    And el usuario selecciona "REALIZAR_PEDIDO" ... passed in 0.150s
-    And el usuario diligencia el formulario con los siguientes datos ... passed in 1.832s
+  Scenario: Agregar múltiples productos y completar la compra con éxito
+    Given el usuario navega a la página pagina https://www.demoblaze.com/ ... passed in 0.645s
+    When el usuario inicia sesión con el usuario "JoseH" y la contraseña "Test1234*" ... passed in 2.205s
+    Then el usuario debería ver su nombre de usuario en el menú ... passed in 1.165s
+    When el usuario agrega los siguientes productos al carrito ... passed in 4.600s
+      | PRODUCTO          |
+      | Nexus 6           |
+      | Samsung galaxy s6 |
+    Then el carrito de compras debería mostrar los productos esperados ... passed in 1.139s
+      | PRODUCTO          |
+      | Nexus 6           |
+      | Samsung galaxy s6 |
+    And el usuario selecciona el botón "REALIZAR_PEDIDO" ... passed in 0.109s
+    And el usuario diligencia el formulario con los siguientes datos ... passed in 1.631s
       | NAME | COUNTRY  | CITY   | CREDIT_CARD | MONTH | YEAR |
       | Jose | Colombia | Bogota | 10992422220 | OCT   | 2028 |
-    Then el usuario selecciona "COMPRAR" ... passed in 0.136s
+    Then el usuario confirma la "COMPRAR" y valida el éxito de la compra ... passed in 0.319s
 
 @scenario.end
 --------------------------------------------------------------------------------
+
+Captured stdout:
+ Validación exitosa. Todos los productos ['Nexus 6', 'Samsung galaxy s6'] están en el carrito.
+¡Compra finalizada y validada exitosamente!
+
 ]]>
 </system-out></testcase></testsuite>
