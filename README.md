@@ -34,7 +34,7 @@ Pasos para replicar el entorno de ejecucion:
 
 1. **Clona el repositorio**
    ```bash
-   git clone origin https://github.com/JoseAndresHG/pruebas.git
+   git clone origin https://github.com/JoseAndresHG/Prueba_automatizacion.git
    
 2. **una vez descargado el repositorio**
 

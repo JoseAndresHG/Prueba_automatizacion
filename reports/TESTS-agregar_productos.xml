@@ -1,0 +1,30 @@
+<testsuite name="agregar_productos.Agregar productos y realizar compra exitosa" tests="1" errors="0" failures="0" skipped="0" time="12.41237" timestamp="2026-06-04T12:49:48.954923" hostname="Joses-MacBook-Air.local"><testcase classname="agregar_productos.Agregar productos y realizar compra exitosa" name="Agregar múltiples productos y completar la compra con éxito" status="passed" time="12.41237"><system-out>
+<![CDATA[
+@scenario.begin
+  Scenario: Agregar múltiples productos y completar la compra con éxito
+    Given el usuario navega a la página pagina https://www.demoblaze.com/ ... passed in 0.562s
+    When el usuario inicia sesión con el usuario "JoseH" y la contraseña "Test1234*" ... passed in 2.026s
+    Then el usuario debería ver su nombre de usuario en el menú ... passed in 1.191s
+    When el usuario agrega los siguientes productos al carrito ... passed in 4.917s
+      | PRODUCTO          |
+      | Nexus 6           |
+      | Samsung galaxy s6 |
+    Then el carrito de compras debería mostrar los productos esperados ... passed in 1.663s
+      | PRODUCTO          |
+      | Nexus 6           |
+      | Samsung galaxy s6 |
+    And el usuario selecciona el botón "REALIZAR_PEDIDO" ... passed in 0.096s
+    And el usuario diligencia el formulario con los siguientes datos ... passed in 1.510s
+      | NAME | COUNTRY  | CITY   | CREDIT_CARD | MONTH | YEAR |
+      | Jose | Colombia | Bogota | 10992422220 | OCT   | 2028 |
+    Then el usuario confirma la "COMPRAR" y valida el éxito de la compra ... passed in 0.449s
+
+@scenario.end
+--------------------------------------------------------------------------------
+
+Captured stdout:
+ Validación exitosa. Todos los productos ['Nexus 6', 'Samsung galaxy s6'] están en el carrito.
+¡Compra finalizada y validada exitosamente!
+
+]]>
+</system-out></testcase></testsuite>
